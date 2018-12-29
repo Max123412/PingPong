@@ -20,6 +20,7 @@ public class PongGame extends ApplicationAdapter {
 	Texture gameOverLogoTexture;
 	boolean isGameOver;
 	Button closeBtn, replayBtn;
+	Texture skyTexture;
 
 
 	@Override
@@ -39,6 +40,7 @@ public class PongGame extends ApplicationAdapter {
 		closeBtn = new Button("close_btn.png");
 		closeBtn.x = Gdx.graphics.getWidth() - closeBtn.texture.getWidth();
 		replayBtn = new Button("replay_btn.png");
+		skyTexture = new Texture("sky_jpeg.jpg");
 	}
 
 	@Override
@@ -81,6 +83,7 @@ public class PongGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
+		batch.draw(skyTexture, 0, 0);
 		ball.draw(batch);
 		paddle.draw(batch);
 		font.draw(batch,"Score: " + score +"  Lives: " + livesCounter , 0, Gdx.graphics.getHeight());
@@ -104,6 +107,7 @@ public class PongGame extends ApplicationAdapter {
 		gameOverLogoTexture.dispose();
 		closeBtn.dispose();
 		replayBtn.dispose();
+		skyTexture.dispose();
 	}
 
 	void bounceBall(){
